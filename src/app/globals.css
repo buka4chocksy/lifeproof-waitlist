@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #07080A;
+  --color-foreground: #F5F5F0;
+  
+  --color-brand-green-glow: #0F5C3F;
+  --color-brand-green-accent: #10B981;
+  --color-brand-green-hover: #16A36A;
+  
+  --color-panel-bg: #0D0F12;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  
+  --font-heading: var(--font-outfit), sans-serif;
+  --font-body: var(--font-jakarta), sans-serif;
+}
+
+:root {
+  --background: #07080A;
+  --foreground: #F5F5F0;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), Arial, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07080A;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c1e24;
+  border-radius: 4px;
+  border: 2px solid #07080A;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(13, 15, 18, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Background grid utility */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+/* Fine-grain noise texture */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+}
+
+/* Animated mesh gradients */
+@keyframes mesh-drift-1 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(80px, -60px) scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes mesh-drift-2 {
+  0% {
+    transform: translate(0px, 0px) scale(1.1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-100px, 40px) scale(0.9) rotate(-180deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1.1) rotate(-360deg);
+  }
+}
+
+.animate-mesh-1 {
+  animation: mesh-drift-1 25s infinite ease-in-out;
+}
+
+.animate-mesh-2 {
+  animation: mesh-drift-2 30s infinite ease-in-out;
+}
+
+/* Cryptographic line flow animation */
+@keyframes path-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-flow-line {
+  stroke-dasharray: 6, 4;
+  animation: path-flow 1.5s linear infinite;
+}
+
+/* Drifting particle elements */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s infinite ease-in-out;
+}
+
+/* Glowing text highlight */
+.text-glow {
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+/* Custom transitions */
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hide autofill yellow/white background in inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #0D0F12 inset !important;
+  -webkit-text-fill-color: #F5F5F0 !important;
+  caret-color: #10B981 !important;
+}
